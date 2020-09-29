@@ -31,7 +31,7 @@ https://drive.google.com/drive/folders/1xROBCUHgIX-3zqKMSHwKFEK8udIEicl1?usp=sha
 * It would be very easy to understand the test function and test on your own data.
 * An example of test usage is shown as follows:
 ```bash 
-python MGANet_test_AI37.py --gpu_id 1 --is_training False
+python MGANet_test_AI37.py --gpu_id 1
 ```
 ## Train and Data
 * We will update the training code and database for TUs' partition of compressed video by HEVC for training and better reading after recent paper deadline.
