@@ -79,7 +79,7 @@ def get_data(one_filename,video_index,num_frame,startfrm_position):
                 mask_37_filename_Y, mask_37_filename_U, mask_37_filename_V = yuv_import(filename=file_name, dims=dims,startfrm=startfrm_position, numframe=num_frame)
                 data_Y.append(mask_37_filename_Y)
         if i == 2:
-            label_37_filename = np.sort(glob.glob('../test_yuv/label/' + '*.yuv'))
+            label_37_filename = np.sort(glob.glob('../testing_set/label/' + '*.yuv'))
             label_37_filename_length = len(label_37_filename)
             for i_2 in range(video_index,video_index+1):
                 file_name = label_37_filename[i_2]
@@ -185,13 +185,13 @@ def image_test(one_filename,net_G,patch_size=[128,128],f_txt=None,opt=None):
 if __name__ == "__main__":
    
     parser = argparse.ArgumentParser(description="MGANet_test")
-    parser.add_argument('--net_G', default='../model/model_epoch_AI37.pth',help="add checkpoint")
+    parser.add_argument('--net_G', default='../models/MGANet_model_AI37.pth',help="add checkpoint")
     parser.add_argument("--gpu_id", default=0, type=int, help="gpu ids (default: 0)")
     parser.add_argument("--video_nums", default=1, type=int, help="Videos number (default: 0)")
     parser.add_argument("--frame_nums", default=29, type=int, help="frame number of the video to test (default: 90)")
     parser.add_argument("--startfrm_position", default=9, type=int, help="start frame position in one video (default: 0)")
     parser.add_argument("--is_training", default=False, type=bool, help="train or test mode")
-    parser.add_argument("--result_path", default='./result_AI37/', type=str, help="store results")
+    parser.add_argument("--result_path", default='../result_AI37/', type=str, help="store results")
     opts = parser.parse_args()
     torch.cuda.set_device(opts.gpu_id)
 
@@ -203,7 +203,7 @@ if __name__ == "__main__":
         os.mknod(txt_name)
         f = open(txt_name, 'w+')
 
-    one_filename = np.sort(glob.glob('../test_yuv/AI37/' + '*'))
+    one_filename = np.sort(glob.glob('../testing_set/AI37/' + '*'))
     print(one_filename)
    
     patch_size =[240,416]
